@@ -23,8 +23,20 @@ class MoneyMachine:
         Quarters ($0.25), dimes ($0.10)
         nickles ($0.05),  pennies ($0.01)\033[m
         ''')
+
+        self.money_received =0
+
         for coin in self.COIN_VALUES:
-            self.money_received += int(input(f"How many {coin}? Please: ")) * self.COIN_VALUES[coin]
+            user_input = input(f"How many {coin}? Please: ")
+            try:
+                num_coins = int(user_input)
+                if num_coins < 0:
+                    print("Wrong input")
+                    return
+                self.money_received += num_coins * self.COIN_VALUES[coin]
+            except ValueError:
+                print("Wrong input")
+                return 
         print(f"You have provided: {self.CURRENCY}{self.money_received}")
         return self.money_received
     
