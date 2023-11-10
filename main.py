@@ -37,8 +37,11 @@ while is_on:
     
     if user_choice == "off":
         print("\033[31m<<THE END>>\033[m")
+        break
     else:
         beverage = menu.find_drink(user_choice) # Encapsulates the result
+        if beverage == 0:
+            break
         sufficient_resources = coffee_maker.is_resource_sufficient(beverage)  # TrueFalse result
         sufficient_money = money_machine.make_payment(beverage.cost)  # Encapsulates
         if sufficient_resources and sufficient_money:
