@@ -1,3 +1,4 @@
+# [Q]: this MenuItem should not be imported AFAIK
 from menu import Menu, MenuItem
 from coffee_maker import CoffeeMaker
 from money_machine import MoneyMachine
@@ -29,6 +30,7 @@ money_machine = MoneyMachine()
 coffee_maker = CoffeeMaker()
 is_on = True
 
+# TODO: you should stay in the loop till the user cleary exit by clicking the "Exit" menu voice
 while is_on:
     welcome()
     options = menu.get_items()
@@ -44,6 +46,7 @@ while is_on:
             break
         sufficient_resources = coffee_maker.is_resource_sufficient(beverage)  # TrueFalse result
         sufficient_money = money_machine.make_payment(beverage.cost)  # Encapsulates
+        # FIXME: there is no point in checking for sufficient_money if you don't have enough resources to make the coffee. Add a check after each function invocation and immediately exit as soon as you find a blocker.
         if sufficient_resources and sufficient_money:
             print("Thank you! Allow us to make your beverage now..")
             coffee_maker.make_coffee(beverage)
