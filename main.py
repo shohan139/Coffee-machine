@@ -27,7 +27,8 @@ menu = Menu()
 money_machine = MoneyMachine()
 coffee_maker = CoffeeMaker()
 is_on = True
-
+repeat_test = 0
+second_repeat = 0
 while is_on:
     welcome()
     options = menu.get_items()
@@ -51,9 +52,39 @@ while is_on:
             beverage = menu.find_drink(user_choice) # Encapsulates the result
             if beverage == 0:
                 break
-            sufficient_resources = coffee_maker.is_resource_sufficient(beverage)  # TrueFalse result
-            sufficient_money = money_machine.make_payment(beverage.cost)  # Encapsulates
-            if sufficient_resources and sufficient_money:
+            # sufficient_resources = coffee_maker.is_resource_sufficient(beverage)  # TrueFalse result
+            if repeat_test == 1:
+                sufficient_money = money_machine.get_change(beverage.cost)
+            else:
+                sufficient_money = money_machine.make_payment(beverage.cost)  # Encapsulates
+            if sufficient_money:
                 print("Thank you! Allow us to make your beverage now..")
                 coffee_maker.make_coffee(beverage)
+                second_repeat = 1
                 sleep(5)
+            else:
+                second_repeat = 0
+
+            while True:
+                try:
+                    repeat = int(input("To make another purchase, please enter 1, or 0 to end!\n:"))
+                except:
+                    if type(repeat) != "int":
+                        print("Wrong input! Try again.")
+                else:
+                    if repeat < 0 or repeat > 1:
+                        print("Wrong input! Try again!")
+                        continue
+                    else:
+                        break
+            if repeat == 0:
+                money_machine.make_change()
+                print("\033[31m<<THE END>>\033[m")
+                break
+            else:
+                repeat_test = 1
+            
+            if second_repeat == 0:
+                repeat_test = 0
+
+            
