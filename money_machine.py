@@ -9,6 +9,7 @@ class MoneyMachine:
     }
 
     def __init__(self):
+        # TODO: we should return this profit somewhere in the code, otherwise it's useless.
         self.profit = 0
         self.money_received = 0
 
@@ -35,9 +36,11 @@ class MoneyMachine:
                     return
                 self.money_received += num_coins * self.COIN_VALUES[coin]
             except ValueError:
+                # FIXME: be more descriptive toward the user when this error happens.
                 print("Wrong input")
                 return 
         print(f"You have provided: {self.CURRENCY}{self.money_received}")
+        # [Q]: are you sure you have to return this value from this function? Or it's enough to set it on the instance? Maybe it's a just a silly question...
         return self.money_received
     
     def make_payment(self, cost):
