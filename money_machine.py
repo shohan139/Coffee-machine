@@ -14,11 +14,10 @@ class MoneyMachine:
         # Returns the total calculated from inserted
 
         while True:
-            print('''\033[33m
-            Enter your money: \033[m
-            ''')
             try:
-                self.money_received = float(input())
+                self.money_received = float(input('''\033[33m
+            Enter your money: \033[m
+            '''))
             except:
                 if type(self.money_received) != "float":
                     print("Wrong input! Try again")
@@ -27,7 +26,6 @@ class MoneyMachine:
                     print("Wrong input! Try again")
                 else:
                     break
-
         return self.money_received
     
     def make_payment(self, cost):
@@ -43,7 +41,10 @@ class MoneyMachine:
             self.money_received = 0
             return False
     def make_change(self):
-        print(f"Here is {self.CURRENCY}{self.change} in change.")
+        if self.change == 0:
+            print("")
+        else:
+            print(f"Here is {self.CURRENCY}{self.change} in change.")
 
     def get_change(self, cost):
         if self.change >= cost:
@@ -51,6 +52,9 @@ class MoneyMachine:
             self.profit += cost
             return True
         else:
-            print("Sorry that's not enough money. Money refunded.")
+            print("Sorry that's not enough money.")
             self.money_received = 0
             return False
+        
+    def change_amount(self):
+        return self.change
