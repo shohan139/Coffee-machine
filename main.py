@@ -28,19 +28,15 @@ menu = Menu()
 money_machine = MoneyMachine()
 coffee_maker = CoffeeMaker()
 is_on = True
-
 repeat_test = 0
 second_repeat = 0
-
-
-# TODO: you should stay in the loop till the user cleary exit by clicking the "Exit" menu voice
 
 while is_on:
     welcome()
     options = menu.get_items()
     flag = 0
     try:
-        user_choice = int(input(f"What would you like?\nOptions ({options}): "))
+        user_choice = int(input(f"What would you like?\n: "))
     except:
         print("Wrong input! Please enter number shown in the menu only!")
         flag = 1
@@ -67,9 +63,11 @@ while is_on:
                 print("Thank you! Allow us to make your beverage now..")
                 coffee_maker.make_coffee(beverage)
                 second_repeat = 1
-                sleep(5)
+                sleep(1)
             else:
                 second_repeat = 0
+
+            money_machine.make_change()
 
             while True:
                 try:
@@ -84,12 +82,11 @@ while is_on:
                     else:
                         break
             if repeat == 0:
-                money_machine.make_change()
                 print("\033[31m<<THE END>>\033[m")
                 break
             else:
                 repeat_test = 1
-            
-            if second_repeat == 0:
+            change = money_machine.change_amount()
+
+            if second_repeat == 0 or change == 0:
                 repeat_test = 0
-                
