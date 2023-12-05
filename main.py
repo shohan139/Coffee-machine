@@ -13,14 +13,13 @@ def welcome():
           `-----' 
     
           ------ MENU ------ 
-          Espresso ($1.50)
-          Latte ($2.50)
-          Cappuccino ($3.00)
+          1. Espresso ($1.50)
+          2. Latte ($2.50)
+          3. Cappuccino ($3.00)
+          4. Exit
           ------------------
     
-          PS: Type "report" at any moment
-          to check our resources available.
-          Type "off" to log out from the machine.\033[m
+          \033[m
         ''')
 
 
@@ -30,24 +29,67 @@ money_machine = MoneyMachine()
 coffee_maker = CoffeeMaker()
 is_on = True
 
+repeat_test = 0
+second_repeat = 0
+
+
 # TODO: you should stay in the loop till the user cleary exit by clicking the "Exit" menu voice
+
 while is_on:
     welcome()
     options = menu.get_items()
-
-    user_choice = str(input(f"What would you like?\nOptions ({options}): ")).strip().lower()
+    flag = 0
+    try:
+        user_choice = int(input(f"What would you like?\nOptions ({options}): "))
+    except:
+        print("Wrong input! Please enter number shown in the menu only!")
+        flag = 1
     
-    if user_choice == "off":
-        print("\033[31m<<THE END>>\033[m")
-        break
+    if flag == 1:
+        continue
+    elif user_choice<=0 or user_choice>4:
+        print("Please enter 1 to 4 only!")
     else:
-        beverage = menu.find_drink(user_choice) # Encapsulates the result
-        if beverage == 0:
+        if user_choice == 4:
+            print("\033[31m<<THE END>>\033[m")
             break
-        sufficient_resources = coffee_maker.is_resource_sufficient(beverage)  # TrueFalse result
-        sufficient_money = money_machine.make_payment(beverage.cost)  # Encapsulates
-        # FIXME: there is no point in checking for sufficient_money if you don't have enough resources to make the coffee. Add a check after each function invocation and immediately exit as soon as you find a blocker.
-        if sufficient_resources and sufficient_money:
-            print("Thank you! Allow us to make your beverage now..")
-            coffee_maker.make_coffee(beverage)
-            sleep(5)
+        else:
+            user_choice = menu.set_items(user_choice)
+            beverage = menu.find_drink(user_choice) # Encapsulates the result
+            if beverage == 0:
+                break
+            # sufficient_resources = coffee_maker.is_resource_sufficient(beverage)  # TrueFalse result
+            if repeat_test == 1:
+                sufficient_money = money_machine.get_change(beverage.cost)
+            else:
+                sufficient_money = money_machine.make_payment(beverage.cost)  # Encapsulates
+            if sufficient_money:
+                print("Thank you! Allow us to make your beverage now..")
+                coffee_maker.make_coffee(beverage)
+                second_repeat = 1
+                sleep(5)
+            else:
+                second_repeat = 0
+
+            while True:
+                try:
+                    repeat = int(input("To make another purchase, please enter 1, or 0 to end!\n:"))
+                except:
+                    if type(repeat) != "int":
+                        print("Wrong input! Try again.")
+                else:
+                    if repeat < 0 or repeat > 1:
+                        print("Wrong input! Try again!")
+                        continue
+                    else:
+                        break
+            if repeat == 0:
+                money_machine.make_change()
+                print("\033[31m<<THE END>>\033[m")
+                break
+            else:
+                repeat_test = 1
+            
+            if second_repeat == 0:
+                repeat_test = 0
+                
