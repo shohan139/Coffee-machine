@@ -8,11 +8,11 @@
 1. please switch the menu options by using the numbers. Try to think of real life. When you go to a coffee machine you don't have to type in the name of the desired beverage, a simple number is enough **OK**
 1. when you type the wrong beverages (wrong number after the changes mentioned above) you should stay in the menu, not exit the application **OK**
 1. add the exit option as the last one in the menu **OK**
-1. keep decreasing the amount of the due money as long as we insert coins
-1. don't ask for dimes, nickels, and pennies if we've already inserted enough money. You force the user to type three useless zeros
-1. add a check on the number of coins inserted by the user. Otherwise, the user can insert an endless number of coins
+1. keep decreasing the amount of the due money as long as we insert coins (updated this one too)
+1. don't ask for dimes, nickels, and pennies if we've already inserted enough money. You force the user to type three useless zeros (updated this one too)
+1. add a check on the number of coins inserted by the user. Otherwise, the user can insert an endless number of coins (updated by asking if he wishes to continue or stop there)
 2. if you do a second operation it won't manage the remainder correctly (such as I take another cappuccino)
-3. the insert money function is not clear: it only asks me to `Enter your money:`. As mentioned above, you should keep asking for money and decrease the amount due.
-4. When you ask to prompt the number for the beverage you can omit the sentence `Options (latte/espresso/cappuccino)` since it's already defined in the user menu
+3. the insert money function is not clear: it only asks me to `Enter your money:`. As mentioned above, you should keep asking for money and decrease the amount due. (updated this one. If you have enough money and you want to purchase again, it will not ask for any money)
+4. When you ask to prompt the number for the beverage you can omit the sentence `Options (latte/espresso/cappuccino)` since it's already defined in the user menu (updated this one)
 
 An OOP-based coffee machine simulation project. It allows users to select different types of coffee, check available resources, make purchases, and handle the financial aspect of the transactions.
