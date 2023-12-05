@@ -15,11 +15,14 @@
 3. the insert money function is not clear: it only asks me to `Enter your money:`. As mentioned above, you should keep asking for money and decrease the amount due. (updated this one. If you have enough money and you want to purchase again, it will not ask for any money)
 4. When you ask to prompt the number for the beverage you can omit the sentence `Options (latte/espresso/cappuccino)` since it's already defined in the user menu (updated this one)
 
-##Coffee Machine
-Overview
+<h1>Coffee Machine</h1>
+<h3>Overview</h3>
+<p>
 This project implements a simple interactive coffee machine simulation. Users can select various coffee options, make payments, and receive their chosen beverages. The project is divided into modular files, each handling specific functionalities.
+</p>
 
-Files
+
+<h4>Files</h4>
 1. main.py
 Description: The main script that orchestrates the coffee machine simulation.
 Responsibilities:
