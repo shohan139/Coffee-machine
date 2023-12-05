@@ -1,3 +1,4 @@
+# [Q]: this MenuItem should not be imported AFAIK
 from menu import Menu, MenuItem
 from coffee_maker import CoffeeMaker
 from money_machine import MoneyMachine
@@ -27,8 +28,13 @@ menu = Menu()
 money_machine = MoneyMachine()
 coffee_maker = CoffeeMaker()
 is_on = True
+
 repeat_test = 0
 second_repeat = 0
+
+
+# TODO: you should stay in the loop till the user cleary exit by clicking the "Exit" menu voice
+
 while is_on:
     welcome()
     options = menu.get_items()
@@ -86,5 +92,4 @@ while is_on:
             
             if second_repeat == 0:
                 repeat_test = 0
-
-            
+                

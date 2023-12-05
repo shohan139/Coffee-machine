@@ -2,6 +2,7 @@ class MoneyMachine:
     CURRENCY = "$"
 
     def __init__(self):
+        # TODO: we should return this profit somewhere in the code, otherwise it's useless.
         self.profit = 0
         self.money_received = 0
 
@@ -26,6 +27,7 @@ class MoneyMachine:
                     print("Wrong input! Try again")
                 else:
                     break
+
         return self.money_received
     
     def make_payment(self, cost):
