@@ -52,7 +52,7 @@ Displaying a message for the user when the coffee is ready.</p>
 <h4>1.  Clone the Repository:</h4>
 
 ```
-git clone https://github.com/shohanR/Coffee-machine.git <br>
+git clone https://github.com/shohanR/Coffee-machine.git 
 cd your-repository
 ```
 
