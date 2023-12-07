@@ -1,5 +1,4 @@
-# [Q]: this MenuItem should not be imported AFAIK
-from menu import Menu, MenuItem
+from menu import Menu
 from coffee_maker import CoffeeMaker
 from money_machine import MoneyMachine
 from time import sleep
@@ -21,8 +20,6 @@ def welcome():
     
           \033[m
         ''')
-
-
 
 menu = Menu()
 money_machine = MoneyMachine()
@@ -81,6 +78,7 @@ while is_on:
                         break
 
             if repeat == 0:
+                print(f"Here is your ${money_machine.change_amount()} in change.")
                 print("\033[31m<<THE END>>\033[m")
                 break
             else:
@@ -89,4 +87,3 @@ while is_on:
 
             if second_repeat == 0 or change == 0:
                 repeat_test = 0
-                
