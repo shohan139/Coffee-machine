@@ -4,7 +4,6 @@
 
 1. keep decreasing the amount of the due money as long as we insert coins
 1. add a check on the number of coins inserted by the user. Otherwise, the user can insert an endless number of coins (updated by asking if he wishes to continue or stop there)
-1. if you do a second operation it won't manage the remainder correctly (such as I take another cappuccino)
 1. the insert money function is not clear: it only asks me to `Enter your money:`. As mentioned above, you should keep asking for money and decrease the amount due. (updated this one. If you have enough money and you want to purchase again, it will not ask for any money)
 
 <h1>Coffee Machine</h1>
