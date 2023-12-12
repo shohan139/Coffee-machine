@@ -2,9 +2,8 @@
 
 ## Fixes
 
-1. keep decreasing the amount of the due money as long as we insert coins
-1. add a check on the number of coins inserted by the user. Otherwise, the user can insert an endless number of coins (updated by asking if he wishes to continue or stop there)
-1. the insert money function is not clear: it only asks me to `Enter your money:`. As mentioned above, you should keep asking for money and decrease the amount due. (updated this one. If you have enough money and you want to purchase again, it will not ask for any money)
+1. Update the label `How many bucks you would like to enter?` with the currency value (0.50) and the limit (`limit:20`) as done with quarters
+1. Wrong remainder management. e.g.: if I select `Espresso` and I insert two bucks, it says me `0.50$ left`. Then, if I select to go ahead with another purchase, it gives me `Sorry that's not enough money. Money refunded.`. Instead, it should ask me for more money to be entered. It must asks me: `How many bucks?`, `How many quarters?`. To get to this point, run the app and keep entering `1` as the value. You'll get to this point.
 
 <h1>Coffee Machine</h1>
 <h3>Overview</h3>
