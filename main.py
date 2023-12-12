@@ -27,6 +27,7 @@ coffee_maker = CoffeeMaker()
 is_on = True
 repeat_test = 0
 second_repeat = 0
+change = 0
 
 while is_on:
     welcome()
@@ -42,6 +43,8 @@ while is_on:
         print("Please enter a number between 1 and 4 only!")
     else:
         if user_choice == 4:
+            if repeat_test == 1:
+                print(f"Here is your ${money_machine.change_amount()} in change.")
             print("\033[31m<<THE END>>\033[m")
             break
         else:
@@ -51,9 +54,9 @@ while is_on:
                 break
 
             if repeat_test == 1:
-                sufficient_money = money_machine.get_change(beverage.cost)
+                sufficient_money = money_machine.make_payment(beverage.cost, change)
             else:
-                sufficient_money = money_machine.make_payment(beverage.cost)
+                sufficient_money = money_machine.make_payment(beverage.cost, change)
 
             if sufficient_money:
                 print("Thank you! Allow us to make your beverage now..")
@@ -78,11 +81,13 @@ while is_on:
                         break
 
             if repeat == 0:
-                print(f"Here is your ${money_machine.change_amount()} in change.")
+                if money_machine.change_amount()>0:
+                    print(f"Here is your ${money_machine.change_amount()} in change.")
                 print("\033[31m<<THE END>>\033[m")
                 break
             else:
                 repeat_test = 1
+
             change = money_machine.change_amount()
 
             if second_repeat == 0 or change == 0:
