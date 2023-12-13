@@ -24,7 +24,7 @@ class MoneyMachine:
         else:
             while True:
                 try:
-                    self.money_received = float(input('\033[33mHow many ($) Dollar would you like to enter? (limit: $20) : \033[m'))
+                    self.money_received = float(input('\033[33mHow many dollar (1.00) would you like to enter? (limit: $20) : \033[m'))
                 except ValueError:
                     print("Wrong input! Try again")
                     continue
