@@ -1,10 +1,5 @@
 # Coffee-machine
 
-## Fixes
-
-1. Update the label `How many bucks you would like to enter?` with the currency value (0.50) and the limit (`limit:20`) as done with quarters
-1. Wrong remainder management. e.g.: if I select `Espresso` and I insert two bucks, it says me `0.50$ left`. Then, if I select to go ahead with another purchase, it gives me `Sorry that's not enough money. Money refunded.`. Instead, it should ask me for more money to be entered. It must asks me: `How many bucks?`, `How many quarters?`. To get to this point, run the app and keep entering `1` as the value. You'll get to this point.
-
 <h1>Coffee Machine</h1>
 <h3>Overview</h3>
 <p>
