@@ -1,6 +1,5 @@
 # Coffee-machine
 
-<h1>Coffee Machine</h1>
 <h3>Overview</h3>
 <p>
 This project implements a simple interactive coffee machine simulation. Users can select various coffee options, make payments, and receive their chosen beverages. The project is divided into modular files, each handling specific functionalities.
