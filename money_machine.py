@@ -3,12 +3,9 @@ class MoneyMachine:
 
     COIN_VALUES = {
         "quarters": 0.25,
-        "dimes": 0.10,
-        "nickels": 0.05,
-        "pennies": 0.01
     }
 
-    QUARTER_LIMIT = 20
+    MAX_COINS_TO_INSERT = 20
 
     def __init__(self):
         self.profit = 0
@@ -24,13 +21,13 @@ class MoneyMachine:
         else:
             while True:
                 try:
-                    self.money_received = float(input('\033[33mHow many dollar (1.00) would you like to enter? (limit: $20) : \033[m'))
+                    self.money_received = float(input('\033[33mHow many dollar (1.00$) would you like to enter? (limit: 20) : \033[m'))
                 except ValueError:
                     print("Wrong input! Try again")
                     continue
                 
-                if self.money_received <= 0 or self.money_received > 20:
-                    print(f"Please enter {self.CURRENCY}1 to {self.CURRENCY}20 only! ")
+                if self.money_received < 0 or self.money_received > self.MAX_COINS_TO_INSERT:
+                    print(f"Please enter {self.CURRENCY}0 to {self.CURRENCY}20 only! ")
                     continue
 
                 self.money_received = n + self.money_received
@@ -39,13 +36,13 @@ class MoneyMachine:
                 if self.money_received < cost:
                     while True:
                         try:
-                            quarters = int(input(f'\033[33mHow many quarters (0.25) would you like to enter? (limit: {self.QUARTER_LIMIT}): \033[m'))
+                            quarters = int(input(f'\033[33mHow many quarters (0.25$) would you like to enter? (limit: {self.MAX_COINS_TO_INSERT}): \033[m'))
                         except ValueError:
                             print("Wrong input! Try again")
                             continue
 
-                        if quarters < 0 or quarters > self.QUARTER_LIMIT:
-                            print(f"Please enter a non-negative integer less than or equal to {self.QUARTER_LIMIT}.")
+                        if quarters < 0 or quarters > self.MAX_COINS_TO_INSERT:
+                            print(f"Please enter a non-negative integer less than or equal to {self.MAX_COINS_TO_INSERT}.")
                             continue
 
                         self.money_received += quarters * self.COIN_VALUES["quarters"]
